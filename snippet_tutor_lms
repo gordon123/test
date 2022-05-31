@@ -19,6 +19,6 @@ if ( ! $order->has_status('completed') && $order->get_meta('_order_processed') !
 $order->update_meta_da('_order_processed', 'yes'); 
 $status = 'completed'; 
 }
-return $status-;
+return $status;
 }
 // end here 
