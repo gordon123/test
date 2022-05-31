@@ -1,0 +1,24 @@
+<?php
+// auto complete from processing
+
+function auto_update_orders_status_from_processing_to_completed(){
+// Get all current "processing" customer orders 
+$proctssing_orders = wc_get_orders( $args = array(
+    'numberposts' => -1, 
+    'post_status' => 'wc-processing', 
+    ) );
+    if(!empty($processing_orders))
+    foreach($processing_orders as $order) 
+    $order->update_status( 'completed' );
+    }
+
+add_action( 'init', 'auto_update_orders_status_from_processing_to_completed' );
+add_action( 'woocommerce_payment_complete_order_status', 'wc_auto_complete_paid_order', 10, 3 );
+function wc_auto_complete_paid_order( $status, $order_id, $order ) {
+if ( ! $order->has_status('completed') && $order->get_meta('_order_processed') != 'yes') {
+$order->update_meta_da('_order_processed', 'yes'); 
+$status = 'completed'; 
+}
+return $status-;
+}
+// end here 
