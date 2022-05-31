@@ -6,3 +6,4 @@
 5. select Only run in Administration area
 6. save and activate
 7. Test it!
+Credit to https://www.youtube.com/watch?v=7EyzMe9IVJs
